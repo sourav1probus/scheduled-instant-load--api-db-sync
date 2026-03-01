@@ -1,0 +1,116 @@
+server:
+  port: 8080
+
+spring:
+  main:
+    lazy-initialization: true
+  task:
+    scheduling:
+      time-zone: Asia/Kolkata
+
+logging:
+  level:
+    root: INFO
+    com.kalkitech: INFO
+
+app:
+  time-zone: "Asia/Kolkata"
+
+  api:
+    url: "http://hes-test.probussense.com:8089/command/readCommand?fallback=false&timeOutMinutes=2&retryCount=0"
+    bearer-token: "eyJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6WyJTRU5TRV9BRE1JTiJdLCJzdWIiOiJzZW5zZWFkbWluIiwiaWF0IjoxNzUzMzM5MTkxLCJleHAiOjMxOTMzMzkxOTF9.8RLUv8mClU3QHD6-vu4CHDfBWBIiN6exFqPlKlP7KpMaairyLL-upzp12DhCdtmsSDL5_H7rBMv9kR0F0RbH2Q"
+    connect-timeout-ms: 5000
+    read-timeout-ms: 30000
+
+    time-out-minutes: 2
+    poll-interval-ms: 1000
+
+    # Resilience / throttling (helps avoid "Connection reset" when you run many meters in parallel)
+    max-in-flight: 5
+    acquire-timeout-ms: 60000
+    retries: 2
+    retry-backoff-ms: 500
+
+    # Reactor-Netty connection pool (avoid stale keep-alive connections)
+    max-connections: 20
+    max-idle-time-ms: 30000
+    max-life-time-ms: 300000
+    pending-acquire-timeout-ms: 60000
+
+    ip: "2401:4900:9867:fd4::2"
+    meter-make: "EEO"
+    meter-number: "EP1260052"
+
+  # For multiple meters, maintain a simple CSV file at project root.
+  # Format: meterNumber,meterMake,ip
+  meters:
+    enabled: true
+    file: "./meters.csv"
+    per-meter-gap-ms: 25
+    parallelism: 8
+
+  scheduling:
+    cron-5min: "0 */5 * * * *"
+    cron-30min: "0 30 * * * *"
+    clash-gap-ms: 100
+    schedule-early-tolerance-ms: 1100
+
+  output:
+    dir: "./out/command-responses"
+
+  db1:
+#    jdbc-url: "jdbc:postgresql://dev-postgres.probussense.com:5432/sensehes_demo_torrent?sslmode=disable"
+    jdbc-url: "jdbc:postgresql://dev-postgres.probussense.com:5432/sensehes_torrent?sslmode=disable"
+    username: "postgres"
+    password: "probusdev"
+    driver-class-name: "org.postgresql.Driver"
+    maximum-pool-size: 5
+
+    delete-request-sql: "DELETE FROM public.meter_command_request WHERE command_id = ?"
+    select-response-sql: "SELECT * FROM public.meter_command_response WHERE command_id = ?"
+
+  db2:
+#    jdbc-url: "jdbc:mysql://dev-starrocks.probussense.com:9030/sense_hes_demo"
+    jdbc-url: "jdbc:mysql://dev-starrocks.probussense.com:9030/sense_hes"
+    username: "root"
+    password: ""
+    driver-class-name: "com.mysql.cj.jdbc.Driver"
+    maximum-pool-size: 5
+
+    wait-seconds: 120
+
+    instant:
+      select-sql: |
+        SELECT
+          METER_READ_DATE_TIME AS meter_read_date_time,
+          meter_number,
+          tor,
+          sensor_time,
+          server_time,
+          extra_props,
+          command_code
+        FROM amr_instant_data
+        WHERE command_code = :commandCode
+      insert-sql: |
+        INSERT INTO amr_instant_data
+          (METER_READ_DATE_TIME, meter_number, tor, sensor_time, server_time, extra_props, command_code)
+        VALUES
+          (:meter_read_date_time, :meter_number, :tor, :sensor_time, :server_time, :extra_props, :command_code)
+
+    load:
+      select-sql: |
+        SELECT
+          DATETIME_SLOT AS datetime_slot,
+          meter_number,
+          tor,
+          sensor_time,
+          server_time,
+          extra_props,
+          command_code
+        FROM amr_load_data
+        WHERE command_code = :commandCode
+      insert-sql: |
+        INSERT INTO amr_load_data
+          (DATETIME_SLOT, meter_number, tor, sensor_time, server_time, extra_props, command_code)
+        VALUES
+          (:datetime_slot, :meter_number, :tor, :sensor_time, :server_time, :extra_props, :command_code)

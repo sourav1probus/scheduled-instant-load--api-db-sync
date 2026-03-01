@@ -1,0 +1,11 @@
+command_id=1767893401
+saved_at=2026-01-08T12:00:19.245833200Z
+{
+  "command_id" : 1767893401,
+  "creation_time" : "2026-01-08T11:30:31.314+00:00",
+  "meter_number" : "EP1260052",
+  "command_type" : "P_READ_INSTANT",
+  "last_update_time" : "2026-01-08T11:30:41.534+00:00",
+  "status" : "SUCCESS",
+  "remarks" : null
+}

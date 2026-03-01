@@ -1,0 +1,340 @@
+{
+  "groups": [
+    {
+      "name": "app",
+      "type": "com.kalkitech.scheduled.config.AppProperties",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties"
+    },
+    {
+      "name": "app.api",
+      "type": "com.kalkitech.scheduled.config.AppProperties$Api",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties",
+      "sourceMethod": "getApi()"
+    },
+    {
+      "name": "app.db1",
+      "type": "com.kalkitech.scheduled.config.AppProperties$Db1",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties",
+      "sourceMethod": "getDb1()"
+    },
+    {
+      "name": "app.db2",
+      "type": "com.kalkitech.scheduled.config.AppProperties$Db2",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties",
+      "sourceMethod": "getDb2()"
+    },
+    {
+      "name": "app.db2.instant",
+      "type": "com.kalkitech.scheduled.config.AppProperties$Db2$Instant",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Db2",
+      "sourceMethod": "getInstant()"
+    },
+    {
+      "name": "app.db2.load",
+      "type": "com.kalkitech.scheduled.config.AppProperties$Db2$Load",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Db2",
+      "sourceMethod": "getLoad()"
+    },
+    {
+      "name": "app.meters",
+      "type": "com.kalkitech.scheduled.config.AppProperties$Meters",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties",
+      "sourceMethod": "getMeters()"
+    },
+    {
+      "name": "app.output",
+      "type": "com.kalkitech.scheduled.config.AppProperties$Output",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties",
+      "sourceMethod": "getOutput()"
+    },
+    {
+      "name": "app.scheduling",
+      "type": "com.kalkitech.scheduled.config.AppProperties$Scheduling",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties",
+      "sourceMethod": "getScheduling()"
+    }
+  ],
+  "properties": [
+    {
+      "name": "app.api.acquire-timeout-ms",
+      "type": "java.lang.Long",
+      "description": "Max time to wait to acquire an API-call permit (ms).",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Api",
+      "defaultValue": 60000
+    },
+    {
+      "name": "app.api.bearer-token",
+      "type": "java.lang.String",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Api"
+    },
+    {
+      "name": "app.api.connect-timeout-ms",
+      "type": "java.lang.Integer",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Api",
+      "defaultValue": 5000
+    },
+    {
+      "name": "app.api.ip",
+      "type": "java.lang.String",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Api"
+    },
+    {
+      "name": "app.api.max-connections",
+      "type": "java.lang.Integer",
+      "description": "Reactor-Netty connection pool: max concurrent connections to API host",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Api",
+      "defaultValue": 20
+    },
+    {
+      "name": "app.api.max-idle-time-ms",
+      "type": "java.lang.Long",
+      "description": "Reactor-Netty connection pool: max idle time before we discard a connection (ms)",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Api",
+      "defaultValue": 30000
+    },
+    {
+      "name": "app.api.max-in-flight",
+      "type": "java.lang.Integer",
+      "description": "Global cap for simultaneous in-flight API calls across all meters.",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Api",
+      "defaultValue": 5
+    },
+    {
+      "name": "app.api.max-life-time-ms",
+      "type": "java.lang.Long",
+      "description": "Reactor-Netty connection pool: max life time of a connection (ms)",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Api",
+      "defaultValue": 300000
+    },
+    {
+      "name": "app.api.meter-make",
+      "type": "java.lang.String",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Api"
+    },
+    {
+      "name": "app.api.meter-number",
+      "type": "java.lang.String",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Api"
+    },
+    {
+      "name": "app.api.pending-acquire-timeout-ms",
+      "type": "java.lang.Long",
+      "description": "Reactor-Netty connection pool: pending acquire timeout (ms)",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Api",
+      "defaultValue": 60000
+    },
+    {
+      "name": "app.api.poll-interval-ms",
+      "type": "java.lang.Long",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Api",
+      "defaultValue": 1000
+    },
+    {
+      "name": "app.api.read-timeout-ms",
+      "type": "java.lang.Integer",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Api",
+      "defaultValue": 30000
+    },
+    {
+      "name": "app.api.retries",
+      "type": "java.lang.Integer",
+      "description": "Retry count for transient network failures (connection reset, timeouts, 5xx). 0 = disable.",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Api",
+      "defaultValue": 2
+    },
+    {
+      "name": "app.api.retry-backoff-ms",
+      "type": "java.lang.Long",
+      "description": "Base backoff between retries (ms).",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Api",
+      "defaultValue": 500
+    },
+    {
+      "name": "app.api.time-out-minutes",
+      "type": "java.lang.Integer",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Api",
+      "defaultValue": 2
+    },
+    {
+      "name": "app.api.url",
+      "type": "java.lang.String",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Api"
+    },
+    {
+      "name": "app.db1.delete-request-sql",
+      "type": "java.lang.String",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Db1"
+    },
+    {
+      "name": "app.db1.driver-class-name",
+      "type": "java.lang.String",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Db1"
+    },
+    {
+      "name": "app.db1.jdbc-url",
+      "type": "java.lang.String",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Db1"
+    },
+    {
+      "name": "app.db1.maximum-pool-size",
+      "type": "java.lang.Integer",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Db1",
+      "defaultValue": 5
+    },
+    {
+      "name": "app.db1.password",
+      "type": "java.lang.String",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Db1"
+    },
+    {
+      "name": "app.db1.select-response-sql",
+      "type": "java.lang.String",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Db1"
+    },
+    {
+      "name": "app.db1.username",
+      "type": "java.lang.String",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Db1"
+    },
+    {
+      "name": "app.db2.driver-class-name",
+      "type": "java.lang.String",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Db2"
+    },
+    {
+      "name": "app.db2.instant.insert-sql",
+      "type": "java.lang.String",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Db2$Instant"
+    },
+    {
+      "name": "app.db2.instant.select-sql",
+      "type": "java.lang.String",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Db2$Instant"
+    },
+    {
+      "name": "app.db2.jdbc-url",
+      "type": "java.lang.String",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Db2"
+    },
+    {
+      "name": "app.db2.load.insert-sql",
+      "type": "java.lang.String",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Db2$Load"
+    },
+    {
+      "name": "app.db2.load.select-sql",
+      "type": "java.lang.String",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Db2$Load"
+    },
+    {
+      "name": "app.db2.maximum-pool-size",
+      "type": "java.lang.Integer",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Db2",
+      "defaultValue": 5
+    },
+    {
+      "name": "app.db2.password",
+      "type": "java.lang.String",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Db2"
+    },
+    {
+      "name": "app.db2.username",
+      "type": "java.lang.String",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Db2"
+    },
+    {
+      "name": "app.db2.wait-seconds",
+      "type": "java.lang.Integer",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Db2",
+      "defaultValue": 120
+    },
+    {
+      "name": "app.meters.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Enable\/disable file-based meter targets.",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Meters",
+      "defaultValue": true
+    },
+    {
+      "name": "app.meters.file",
+      "type": "java.lang.String",
+      "description": "Path to CSV file. Default: meters.csv in project root so it can be edited easily.",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Meters",
+      "defaultValue": ".\/meters.csv"
+    },
+    {
+      "name": "app.meters.parallelism",
+      "type": "java.lang.Integer",
+      "description": "Max parallel meter pipelines to run. Controls overall concurrency while still keeping per-meter ordering.",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Meters",
+      "defaultValue": 8
+    },
+    {
+      "name": "app.meters.per-meter-gap-ms",
+      "type": "java.lang.Integer",
+      "description": "Optional small delay between meters to avoid bursts.",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Meters",
+      "defaultValue": 50
+    },
+    {
+      "name": "app.output.dir",
+      "type": "java.lang.String",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Output",
+      "defaultValue": ".\/out\/command-responses"
+    },
+    {
+      "name": "app.scheduling.clash-gap-ms",
+      "type": "java.lang.Long",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Scheduling",
+      "defaultValue": 100
+    },
+    {
+      "name": "app.scheduling.cron30min",
+      "type": "java.lang.String",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Scheduling",
+      "defaultValue": "0 0 0 * * *"
+    },
+    {
+      "name": "app.scheduling.cron5min",
+      "type": "java.lang.String",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Scheduling",
+      "defaultValue": "0 *\/5 * * * *"
+    },
+    {
+      "name": "app.scheduling.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Master switch for running all schedules in this application. Defaults to true so older configs keep working.",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Scheduling",
+      "defaultValue": true
+    },
+    {
+      "name": "app.scheduling.schedule-early-tolerance-ms",
+      "type": "java.lang.Long",
+      "description": "Some environments fire cron tasks a few milliseconds early\/late. We add a small tolerance when computing the aligned slot time so commandId\/from\/to match the intended boundary.",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Scheduling",
+      "defaultValue": 1100
+    },
+    {
+      "name": "app.scheduling.schedule-tolerance-ms",
+      "type": "java.lang.Long",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Scheduling"
+    },
+    {
+      "name": "app.scheduling.zone",
+      "type": "java.lang.String",
+      "description": "Time-zone used for aligning slot boundaries (commandId\/from\/to calculations). Defaults to Asia\/Kolkata.",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties$Scheduling",
+      "defaultValue": "Asia\/Kolkata"
+    },
+    {
+      "name": "app.time-zone",
+      "type": "java.lang.String",
+      "sourceType": "com.kalkitech.scheduled.config.AppProperties",
+      "defaultValue": "Asia\/Kolkata"
+    }
+  ],
+  "hints": [],
+  "ignored": {
+    "properties": []
+  }
+}

@@ -1,0 +1,11 @@
+command_id=1772198700
+saved_at=2026-02-27T07:55:12.851338700Z
+{
+  "command_id" : 1772198700,
+  "creation_time" : "2026-02-27T07:55:02.291+00:00",
+  "meter_number" : "21009095",
+  "command_type" : "P_READ_INSTANT",
+  "last_update_time" : "2026-02-27T07:55:12.518+00:00",
+  "status" : "FAILED",
+  "remarks" : "Ip not available for meter 21009095"
+}

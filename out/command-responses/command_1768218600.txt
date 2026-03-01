@@ -1,0 +1,11 @@
+command_id=1768218600
+saved_at=2026-01-12T06:26:04.045632900Z
+{
+  "command_id" : 1768218600,
+  "creation_time" : "2026-01-12T06:25:51.767+00:00",
+  "meter_number" : "29550184",
+  "command_type" : "P_READ_INSTANT",
+  "last_update_time" : "2026-01-12T06:26:01.992+00:00",
+  "status" : "FAILED",
+  "remarks" : "Connect timed out"
+}

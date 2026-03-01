@@ -1,0 +1,11 @@
+command_id=1772038500
+saved_at=2026-02-25T11:25:22.085530100Z
+{
+  "command_id" : 1772038500,
+  "creation_time" : "2026-02-25T11:25:08.064+00:00",
+  "meter_number" : "AL8005425",
+  "command_type" : "P_READ_INSTANT",
+  "last_update_time" : "2026-02-25T11:25:18.286+00:00",
+  "status" : "SUCCESS",
+  "remarks" : null
+}
