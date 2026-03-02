@@ -71,10 +71,10 @@ public class ScheduledOrchestrator {
 
         // Revised condition to skip every :30 which is  @Scheduled(cron = "0 */30 * * * *")
         //for disabled load set it to 00:00 hrs that is why
-//          if((now.getMinute()%30 ==0) && now.getSecond()<2){
-//            log.info("[INSTANT_5MIN] Skipping at :30 because LOAD job will handle it");
-//            return;
-//        }
+          if((now.getMinute()%30 ==0) && now.getSecond()<2){
+            log.info("[INSTANT_5MIN] Skipping at :30 because LOAD job will handle it");
+            return;
+        }
 
         if (!SCHED_LOCK.tryLock()) {
             log.warn("[INSTANT_5MIN] Scheduler busy, skipping this tick");
@@ -94,8 +94,10 @@ public class ScheduledOrchestrator {
      * Both are queued per-meter to guarantee LOAD then INSTANT order for the same meter.
      */
 //    @Scheduled(cron = "0 30 * * * *")
-//    @Scheduled(cron = "0 */30 * * * *")
-    @Scheduled(cron = "0 0 0 * * *")
+
+//    @Scheduled(cron = "0 0 0 * * *")
+
+    @Scheduled(cron = "0 */30 * * * *")
     public void runLoadEveryHourAt30() {
         if (!props.getScheduling().isEnabled()) return;
 

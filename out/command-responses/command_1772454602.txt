@@ -1,0 +1,14 @@
+command_id=1772454602
+saved_at=2026-03-02T07:01:46.420132Z
+{
+  "command_id" : 1772454602,
+  "creation_time" : "2026-03-02T07:01:35.883+00:00",
+  "meter_number" : "EP1260051",
+  "command_type" : "P_READ_INSTANT",
+  "last_update_time" : "2026-03-02T07:01:45.918+00:00",
+  "status" : "FAILED",
+  "remarks" : "Service not allowed. Ciphering failed",
+  "persisted_time" : "2026-03-02T07:01:45.918+00:00",
+  "cumulative_retry_count" : 0,
+  "detailed_status" : "EXCEPTION"
+}

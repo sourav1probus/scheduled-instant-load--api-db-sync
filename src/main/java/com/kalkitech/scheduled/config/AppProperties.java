@@ -155,7 +155,7 @@ public class AppProperties {
 
         @NotBlank private String cron5min = "0 */5 * * * *";
         // Only at HH:30 (HH:00 is typically handled by server's internal schedule)
-        @NotBlank private String cron30min = "0 0 0 * * *";//"0 30 * * * *";
+        @NotBlank private String cron30min ="0 30 * * * *"; //"0 0 0 * * *";//
         @Min(0) private long clashGapMs = 100;
         /**
          * Some environments fire cron tasks a few milliseconds early/late. We add a small tolerance

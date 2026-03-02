@@ -292,7 +292,7 @@
       "name": "app.scheduling.cron30min",
       "type": "java.lang.String",
       "sourceType": "com.kalkitech.scheduled.config.AppProperties$Scheduling",
-      "defaultValue": "0 0 0 * * *"
+      "defaultValue": "0 30 * * * *"
     },
     {
       "name": "app.scheduling.cron5min",

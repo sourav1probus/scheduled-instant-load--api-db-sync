@@ -1,0 +1,14 @@
+command_id=1772461803
+saved_at=2026-03-02T09:02:56.926040Z
+{
+  "command_id" : 1772461803,
+  "creation_time" : "2026-03-02T09:01:55.159+00:00",
+  "meter_number" : "21009095",
+  "command_type" : "P_READ_INSTANT",
+  "last_update_time" : "2026-03-02T09:02:05.195+00:00",
+  "status" : "FAILED_NIC_BUSY",
+  "remarks" : "FAILED NIC BUSY",
+  "persisted_time" : "2026-03-02T09:02:05.195+00:00",
+  "cumulative_retry_count" : 0,
+  "detailed_status" : "FAILED_NIC_BUSY"
+}
