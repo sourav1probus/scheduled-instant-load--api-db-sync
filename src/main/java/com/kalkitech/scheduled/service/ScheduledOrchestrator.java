@@ -226,6 +226,7 @@ public class ScheduledOrchestrator {
             return;
         }
 
+        //command delete request for schedular view
         try {
             db1.deleteRequest(commandId);
         } catch (Exception e) {
@@ -239,7 +240,8 @@ public class ScheduledOrchestrator {
         }
 
         var respRow = respRowOpt.get();
-        db1.saveResponseToFile(commandId, respRow);
+        // Optional debug: save response to file for inspection (can be large, so not always recommended)
+//        db1.saveResponseToFile(commandId, respRow);
 
         String status = String.valueOf(respRow.getOrDefault("status", "")).toLowerCase(Locale.ROOT).trim();
         log.info("[{}] DB1 status for commandId={} is '{}' (meter={})", tag, commandId, status, meter.meterNumber());
