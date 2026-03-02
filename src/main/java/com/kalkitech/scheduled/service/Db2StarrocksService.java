@@ -64,10 +64,12 @@ public class Db2StarrocksService {
         }
     }
 
+    //DB2 vatchUpdate stop
     private void batchInsert(DataType type, List<Map<String, Object>> rows) {
         String sql = (type == DataType.INSTANT)
                 ? props.getDb2().getInstant().getInsertSql()
                 : props.getDb2().getLoad().getInsertSql();
+
         try {
             @SuppressWarnings("unchecked")
             Map<String, Object>[] batch = rows.toArray(new Map[0]);

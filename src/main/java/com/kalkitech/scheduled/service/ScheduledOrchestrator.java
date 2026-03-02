@@ -227,11 +227,11 @@ public class ScheduledOrchestrator {
         }
 
         //command delete request for schedular view
-        try {
-            db1.deleteRequest(commandId);
-        } catch (Exception e) {
-            log.error("[{}] DB1 deleteRequest failed for commandId={}, meter={}: {}", tag, commandId, meter.meterNumber(), e.getMessage(), e);
-        }
+//        try {
+//            db1.deleteRequest(commandId);
+//        } catch (Exception e) {
+//            log.error("[{}] DB1 deleteRequest failed for commandId={}, meter={}: {}", tag, commandId, meter.meterNumber(), e.getMessage(), e);
+//        }
 
         Optional<java.util.Map<String, Object>> respRowOpt = db1.pollResponseUntilTerminal(commandId);
         if (respRowOpt.isEmpty()) {
@@ -246,11 +246,13 @@ public class ScheduledOrchestrator {
         String status = String.valueOf(respRow.getOrDefault("status", "")).toLowerCase(Locale.ROOT).trim();
         log.info("[{}] DB1 status for commandId={} is '{}' (meter={})", tag, commandId, status, meter.meterNumber());
 
-        if ("success".equals(status)) {
-            db2.waitAndNullCommandCodeThenInsert(dataType, commandId);
-        } else {
-            log.info("[{}] Skipping DB2 update because status is {} (meter={})", tag, status, meter.meterNumber());
-        }
+        // Only proceed to DB2 if status is "success". If "failed" or "timeout", skip DB2 update to avoid inserting potentially incomplete/invalid data.
+        //stop db2_update for all since we need visualise data with command id
+//        if ("success".equals(status)) {
+//            db2.waitAndNullCommandCodeThenInsert(dataType, commandId);
+//        } else {
+//            log.info("[{}] Skipping DB2 update because status is {} (meter={})", tag, status, meter.meterNumber());
+//        }
     }
 
     private void sleepQuietly(Duration d) {
